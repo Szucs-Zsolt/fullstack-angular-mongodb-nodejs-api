@@ -32,4 +32,14 @@ const kerdoivekLetoltese = asyncHandler(async (req, res) => {
     res.status(200).json(kerdoivek);
 });
 
-module.exports = {  kerdoivBekuldese, kerdoivekLetoltese };
+//@desc A requestet elküldő IP szavazott már?
+//@route GET /kerdoiv/szavazott
+//@access public
+const marSzavazott = asyncHandler(async (req, res) => {
+    clientIP = req.ip;
+    const szavazat = await Kerdoiv.findOne({ip: clientIP});
+    szavazott = szavazat != null;
+    res.status(200).json({szavazott: szavazott});
+});
+
+module.exports = {  kerdoivBekuldese, kerdoivekLetoltese, marSzavazott };
