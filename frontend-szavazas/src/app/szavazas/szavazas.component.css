@@ -16,8 +16,10 @@ h3 {
 select {
     width:200px;
     padding:5px;
+    margin-top: 2px;
     margin-bottom:10px;
     border-radius:5px;
+    border: 1px solid;
 }
 
 .select:focus {
@@ -26,6 +28,9 @@ select {
 
 button {
     width: 200px;
-    margin-top:5px;
+    margin-top:10px;
+    padding: 4px;
     background-color:#24a0ed;
+    border-radius: 5px;
+    border: 1px solid black;
 }
