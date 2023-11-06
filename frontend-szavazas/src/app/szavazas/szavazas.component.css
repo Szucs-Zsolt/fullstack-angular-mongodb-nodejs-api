@@ -1,0 +1,31 @@
+h3 {
+    text-align: center;
+    margin-top:0px;
+    margin-bottom:5px;
+}
+
+.form-szavazas {
+    max-width: 200px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+}
+
+select {
+    width:200px;
+    padding:5px;
+    margin-bottom:10px;
+    border-radius:5px;
+}
+
+.select:focus {
+    border-color: blue;
+}
+
+button {
+    width: 200px;
+    margin-top:5px;
+    background-color:#24a0ed;
+}
