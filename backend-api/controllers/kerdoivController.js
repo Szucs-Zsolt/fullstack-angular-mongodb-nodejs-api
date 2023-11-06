@@ -6,6 +6,14 @@ const connectMongoDb = require("../config/dbConnection");
 //@route POST /kerdoiv/bekuldes
 //@access public
 const kerdoivBekuldese = asyncHandler(async (req, res) => {
+    clientIP = req.ip;
+    if (await Kerdoiv.findOne({ip: clientIP})) {
+        res.status(400).json({
+            szavazott: true, 
+            message: "Ez az IP cím már szavazott"
+        });
+    }
+
     const { minoseg, gyorsasag, ar } = req.body;
     if (!minoseg || !gyorsasag || !ar) {
         res.status(400).json({
