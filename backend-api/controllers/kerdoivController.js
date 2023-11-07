@@ -10,9 +10,13 @@ const kerdoivBekuldese = asyncHandler(async (req, res) => {
     const { minoseg, gyorsasag, ar } = req.body;
 
     if (await Kerdoiv.findOne({ip: clientIP})) {
+        // Tesztelés során akkor is beírjuk az adatbázisba, ha az IP cím már szavazott.
+        const kerdoiv = await Kerdoiv.create({minoseg, gyorsasag, ar, ip:req.ip});
         res.status(400).json({
             szavazott: true, 
-            message: "Ez az IP cím már szavazott"
+            message: "Ez az IP cím már szavazott",
+            message2:"A tesztelés során azonban megengedjük a többszöri szavazást is.",
+            kerdoiv: kerdoiv
         });
     }
     else if (!minoseg || !gyorsasag || !ar) {
