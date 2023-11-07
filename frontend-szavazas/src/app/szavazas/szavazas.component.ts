@@ -14,7 +14,8 @@ export class SzavazasComponent implements OnInit {
   gyorsasag: number = 3;
   ar = 3;
   marSzavazott: boolean = false;
-  osszesLeadottSzavazat: KerdoivModel[] = [];
+  szavazasEredmenye: any = []
+  //osszesLeadottSzavazat: KerdoivModel[] = [];
 
   constructor(
     private service: KerdoivAPIService,
@@ -23,16 +24,17 @@ export class SzavazasComponent implements OnInit {
 
   ngOnInit(): void {
     //this.service.getAllKerdoiv()
-    //  .subscribe(data => {console.log(data)});
-
-    this.service.getAllKerdoiv()
-      .subscribe(data => {this.osszesLeadottSzavazat = data;});
+    //  .subscribe(data => {this.osszesLeadottSzavazat = data;});
       
     this.service.marSzavazott()
     .subscribe(x=> { 
       this.marSzavazott = x.szavazott;
-      console.log("this.marSzavazott?", this.marSzavazott);
+      //console.log("this.marSzavazott?", this.marSzavazott);
     });      
+
+    
+    this.service.szavazasEredmenye()
+      .subscribe(data => {this.szavazasEredmenye = data;});
   }
 
 

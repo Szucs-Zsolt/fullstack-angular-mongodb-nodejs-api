@@ -25,6 +25,12 @@ export class KerdoivAPIService {
     const endpointUrl = `${this.apiUrl}/kerdoiv/letoltes/`;
     return this.http.get<KerdoivModel[]>(endpointUrl);
   }
+
+  szavazasEredmenye(): Observable<Object> {
+    const endpointUrl = `${this.apiUrl}/kerdoiv/eredmeny/`;
+    return this.http.get<Object>(endpointUrl);
+  }
+
   createOneKerdoiv(minoseg: number, gyorsasag: number, ar: number) {
     const endpointUrl = `${this.apiUrl}/kerdoiv/bekuldes/`;
     let kerdoiv: KerdoivModel = {

@@ -59,13 +59,14 @@ const eredmeny = asyncHandler(async(req, res)=> {
         {
             $group: {
                 _id: "eredmeny",
-                minoseg: { $avg: "$minoseg" },
+                minoseg:  {$avg: "$minoseg" },
                 gyorsasag: { $avg: "$gyorsasag" },
                 ar: { $avg: "$ar" },
             }
         }
     ]);
     eredmeny.push({szavazatokSzama: await Kerdoiv.count()});
+    
     res.status(200).json(eredmeny);
 });
 module.exports = {  kerdoivBekuldese, kerdoivekLetoltese, marSzavazott, eredmeny };
