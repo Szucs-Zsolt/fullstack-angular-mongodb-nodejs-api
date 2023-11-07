@@ -14,7 +14,7 @@ export class SzavazasComponent implements OnInit {
   gyorsasag: number = 3;
   ar = 3;
   marSzavazott: boolean = false;
-  szavazasEredmenye: any = []
+  //szavazasEredmenye: any = []
   //osszesLeadottSzavazat: KerdoivModel[] = [];
 
   constructor(
@@ -33,8 +33,8 @@ export class SzavazasComponent implements OnInit {
     });      
 
     
-    this.service.szavazasEredmenye()
-      .subscribe(data => {this.szavazasEredmenye = data;});
+    //this.service.szavazasEredmenye()
+    //  .subscribe(data => {this.szavazasEredmenye = data;});
   }
 
 
@@ -43,12 +43,7 @@ export class SzavazasComponent implements OnInit {
     this.service.createOneKerdoiv(this.minoseg, this.gyorsasag, this.ar)
       .subscribe(kerdoiv=> console.log(kerdoiv));
 
-      //this.router.navigate([this.router.url]);  
-      window.location.reload();
-  }
-
-  frissit(): void {
-    console.log("frissit() lefutott");
-    this.router.navigate([this.router.url]);
+      this.router.navigate(['eredmeny']);  
+      //window.location.reload();
   }
 }
