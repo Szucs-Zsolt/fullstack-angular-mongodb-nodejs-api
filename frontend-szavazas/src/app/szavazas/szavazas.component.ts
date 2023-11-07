@@ -37,13 +37,16 @@ export class SzavazasComponent implements OnInit {
     //  .subscribe(data => {this.szavazasEredmenye = data;});
   }
 
+  ujraSzavaz(): void {
+    this.marSzavazott = false;
+  }
 
   onSubmit() {
     //console.log(`Minőség: ${this.minoseg}, Gyorsaság: ${this.gyorsasag},  Ár: ${this.ar}`);
     this.service.createOneKerdoiv(this.minoseg, this.gyorsasag, this.ar)
       .subscribe(kerdoiv=> console.log(kerdoiv));
 
-      this.router.navigate(['eredmeny']);  
-      //window.location.reload();
+      //this.router.navigate(['eredmeny']);  
+      window.location.reload();
   }
 }

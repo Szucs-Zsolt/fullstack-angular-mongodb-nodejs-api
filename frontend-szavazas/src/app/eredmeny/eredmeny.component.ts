@@ -16,6 +16,6 @@ export class EredmenyComponent implements OnInit {
   ngOnInit(): void {
     this.service.szavazasEredmenye()
       .subscribe(data => {this.szavazasEredmenye = data;});
-  }
+    }
 
 }

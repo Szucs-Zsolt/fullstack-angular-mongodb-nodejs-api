@@ -4,54 +4,57 @@
 
 <ng-template [ngIf]="marSzavazott" [ngIfElse]="megNemSzavazott">
     <div class="marSzavazott">
-        <h3>Erről a IP-címről már szavaztak. Köszönjük.</h3>
+        <h3>Köszönjük, hogy erről a IP-címről már szavazott.</h3>
         <div>
             Annak érdekében, hogy jobban tesztelhető legyen a program,
             ezért az IP cím ellenőrzést ideiglenesen felfüggesztettük,
             így lehetőség van több szavazat leadására is, ugyanarról az
             IP címről.
         </div>
-       
-        <!--
+
         <div>
-            A szavazás jelenlegi állása: {{osszesLeadottSzavazat |json}}
+        <button (click)="ujraSzavaz()">Szeretnék újra szavazni</button>
         </div>
--->
+        <div>
+        <a routerLink="/eredmeny">Szeretném látni a szavazás eredményét</a>
+        </div>
     </div>
 </ng-template>
 
 
 <ng-template #megNemSzavazott>
     <h5>Ön még nem szavazott, kérem szavazzon:</h5>
+
+    <form (ngSubmit)="onSubmit()" class="form-szavazas">
+        <div>A termék minősége:</div>
+        <select name="minoseg" id="minoseg" [(ngModel)]="minoseg">
+            <option value="1">Alacsony</option>
+            <option value="2">Átlag alatti</option>
+            <option value="3">Átlagos</option>
+            <option value="4">Átlag feletti</option>
+            <option value="5">Nagyszerű</option>
+        </select>
+    
+        <div>A kiszállítás gyorsasága:</div>
+        <select name="gyorsasag" id="gyorsasag" [(ngModel)]="gyorsasag">
+            <option value="1">Nagyon lassú</option>
+            <option value="2">Lassú</option>
+            <option value="3">Átlagos</option>
+            <option value="4">Gyors</option>
+            <option value="5">Nagyon gyors</option>
+        </select>
+    
+        <div>A termék ára:</div>
+        <select name="ar" id="ar" [(ngModel)]="ar">
+            <option value="1">Nagyon drága</option>
+            <option value="2">Viszonylag drága</option>
+            <option value="3">Átlagos</option>
+            <option value="4">Viszonylag olcsó</option>
+            <option value="5">Nagyon olcsó</option>
+        </select>
+    
+        <button class="form-button" type="submit">Beküld</button>
+    </form>
 </ng-template>
 
-<form (ngSubmit)="onSubmit()" class="form-szavazas">
-    <div>A termék minősége:</div>
-    <select name="minoseg" id="minoseg" [(ngModel)]="minoseg">
-        <option value="1">Alacsony</option>
-        <option value="2">Átlag alatti</option>
-        <option value="3">Átlagos</option>
-        <option value="4">Átlag feletti</option>
-        <option value="5">Nagyszerű</option>
-    </select>
 
-    <div>A kiszállítás gyorsasága:</div>
-    <select name="gyorsasag" id="gyorsasag" [(ngModel)]="gyorsasag">
-        <option value="1">Nagyon lassú</option>
-        <option value="2">Lassú</option>
-        <option value="3">Átlagos</option>
-        <option value="4">Gyors</option>
-        <option value="5">Nagyon gyors</option>
-    </select>
-
-    <div>A termék ára:</div>
-    <select name="ar" id="ar" [(ngModel)]="ar">
-        <option value="1">Nagyon drága</option>
-        <option value="2">Viszonylag drága</option>
-        <option value="3">Átlagos</option>
-        <option value="4">Viszonylag olcsó</option>
-        <option value="5">Nagyon olcsó</option>
-    </select>
-
-    <button type="submit">Beküld</button>
-</form>
