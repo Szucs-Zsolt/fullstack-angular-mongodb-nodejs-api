@@ -50,4 +50,23 @@ const marSzavazott = asyncHandler(async (req, res) => {
     res.status(200).json({szavazott: szavazott});
 });
 
-module.exports = {  kerdoivBekuldese, kerdoivekLetoltese, marSzavazott };
+//@desc A szavazás állása: hány szavazat és a kategóriák átlaga
+//@route GET /kerdoiv/eredmeny
+//@access publoc
+const eredmeny = asyncHandler(async(req, res)=> {
+    
+    const eredmeny = await Kerdoiv.aggregate([
+        {
+            $group: {
+                _id: "eredmeny",
+                minoseg: { $avg: "$minoseg" },
+                gyorsasag: { $avg: "$gyorsasag" },
+                ar: { $avg: "$ar" }
+            }
+        }
+    ]);
+    
+    //res.status(200).json({eredmeny: "eredmeny API"});
+    res.status(200).json(eredmeny);
+});
+module.exports = {  kerdoivBekuldese, kerdoivekLetoltese, marSzavazott, eredmeny };
