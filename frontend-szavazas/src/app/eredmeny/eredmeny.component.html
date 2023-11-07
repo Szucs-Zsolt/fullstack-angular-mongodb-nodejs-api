@@ -1,7 +1,12 @@
-<p>eredmeny works!</p>
 <div>
-    Szavazatok száma: {{ szavazasEredmenye[1]?.szavazatokSzama }} <br />
-    Minőség: {{ szavazasEredmenye[0]?.minoseg | number: "1.2-2"}} / 5<br />
-    Gyorsaság: {{ szavazasEredmenye[0]?.gyorsasag | number: "1.2-2"}} / 5 <br />
-    Ár: {{szavazasEredmenye[0]?.ar | number: "1.2-2"}} / 5
+    <h3>A szavazás eredménye:</h3>
+</div>>
+<div class="szavazasEredmenye">
+    <div><span class="col-100">Minőség:</span>{{ szavazasEredmenye[0]?.minoseg | number: "1.2-2"}} / 5</div>
+    <div><span class="col-100">Gyorsaság:</span>{{ szavazasEredmenye[0]?.gyorsasag | number: "1.2-2"}} / 5</div>
+    <div><span class="col-100">Ár:</span>{{szavazasEredmenye[0]?.ar | number: "1.2-2"}} / 5</div>
+
+    <h4>A leadott szavazatok száma: {{ szavazasEredmenye[1]?.szavazatokSzama }} </h4>
 </div>
+
+<a routerLink="/">Vissza a főoldalra</a>
