@@ -1,8 +1,30 @@
 <div>
-    <h3>SZAVAZÁS</h3>
+    <h3>ELÉGEDETTSÉGI KÉRDŐÍV</h3>
 </div>
 
-<form (ngSubmit)="onSubmit()"  class="form-szavazas">
+<ng-template [ngIf]="marSzavazott" [ngIfElse]="megNemSzavazott">
+    <div class="marSzavazott">
+        <h3>Erről a IP-címről már szavaztak. Köszönjük.</h3>
+        <div>
+            Annak érdekében, hogy jobban tesztelhető legyen a program,
+            ezért az IP cím ellenőrzést ideiglenesen felfüggesztettük,
+            így lehetőség van több szavazat leadására is, ugyanarról az
+            IP címről.        
+        </div>
+<!--
+        <div>
+            A szavazás jelenlegi állása: {{osszesLeadottSzavazat |json}}
+        </div>
+-->
+    </div>
+</ng-template>
+
+
+<ng-template #megNemSzavazott>
+    <h5>Ön még nem szavazott, kérem szavazzon:</h5>
+</ng-template>
+
+<form (ngSubmit)="onSubmit()" class="form-szavazas">
     <div>A termék minősége:</div>
     <select name="minoseg" id="minoseg" [(ngModel)]="minoseg">
         <option value="1">Alacsony</option>
@@ -27,7 +49,7 @@
         <option value="2">Viszonylag drága</option>
         <option value="3">Átlagos</option>
         <option value="4">Viszonylag olcsó</option>
-        <option value="5">Nagyon olcsó</option>       
+        <option value="5">Nagyon olcsó</option>
     </select>
 
     <button type="submit">Beküld</button>
