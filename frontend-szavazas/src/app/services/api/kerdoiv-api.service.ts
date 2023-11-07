@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { KerdoivModel } from './models/kerdoiv-model';
+import { MarSzavazottModel } from './models/mar-szavazott';
 
 
 const httpOptions = {
@@ -35,6 +36,11 @@ export class KerdoivAPIService {
     let result = this.http.post(endpointUrl, kerdoiv, httpOptions);
     console.log(result);
     return result;
+  }
+
+  marSzavazott(): Observable<MarSzavazottModel> {
+    const endpointUrl = `${this.apiUrl}/kerdoiv/szavazott`;
+    return this.http.get<MarSzavazottModel>(endpointUrl);
   }
 
 }
